@@ -1,0 +1,12 @@
+name: Increase Code Coverage
+description: Increases code coverage thresholds
+inputs:
+  config-path:
+    description: 'Path to test config file (e.g. ../jest.config.js)'
+    required: true
+  summary-path:
+    description: 'Path to generated code coverage summary JSON file (e.g. ../coverage/coverage-summary.json)'
+    required: true
+runs:
+  using: 'node16'
+  main: 'index.js'

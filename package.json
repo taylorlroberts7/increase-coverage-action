@@ -1,0 +1,13 @@
+{
+  "name": "increase-coverage-action",
+  "version": "1.0.0",
+  "description": "GitHub action for increasing test coverage thresholds",
+  "main": "index.js",
+  "repository": "https://github.com/taylorlroberts7/increase-coverage-action",
+  "author": "taylorlroberts7",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "json-format": "^1.0.1"
+  }
+}
