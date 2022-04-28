@@ -8,6 +8,7 @@ const fs = require("fs");
 // const files = await globber.glob();
 
 const format = require("json-format");
+const { config } = require("process");
 
 module.exports = async () => {
   try {
@@ -27,69 +28,49 @@ module.exports = async () => {
 
     console.log("summaryCache -chk", summaryCache);
 
-    // const coverageJson = fs.readFile(
-    //   // "coverage/coverage-summary.json",
-    //   coverageSummaryPath,
-    //   (err, data) => {
+    const coverage = JSON.parse(fs.readFileSync(coverageSummaryPath, "utf8"));
 
-    //     if (err) throw err;
+    console.log("coverage JSON -chk", coverage);
 
-    //     console.log("summary data -chk", JSON.parse(data));
-    //   }
-    // );
-    const coverageJson = JSON.parse(
-      fs.readFileSync(coverageSummaryPath, "utf8")
-    );
+    const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
 
-    console.log("coverageJson -chk", coverageJson);
-
-    const configJson = fs.readFile(
-      // "coverage/coverage-summary.json",
-      configPath,
-      (err, data) => {
-        console.log("config err -chk", err);
-
-        if (err) throw err;
-
-        console.log("config data -chk", JSON.parse(data));
-      }
-    );
-
-    console.log("configJson -chk", configJson);
+    console.log("config JSON -chk", config);
 
     // const coverage = require(coverageSummaryPath);
     // const config = require(configPath);
 
-    // const coverageByFile = {};
-    // Object.keys(coverage).forEach((key) => {
-    //   if (key !== "total") {
-    //     const filePath = key.substring(key.indexOf("src"));
-    //     coverageByFile[`./${filePath}`] = {
-    //       branches: coverage[key].branches.pct,
-    //       functions: coverage[key].functions.pct,
-    //       lines: coverage[key].lines.pct,
-    //       statements: coverage[key].statements.pct,
-    //     };
-    //   }
-    // });
+    const coverageByFile = {};
+    Object.keys(coverage).forEach((key) => {
+      if (key !== "total") {
+        const filePath = key.substring(key.indexOf("src"));
+        coverageByFile[`./${filePath}`] = {
+          branches: coverage[key].branches.pct,
+          functions: coverage[key].functions.pct,
+          lines: coverage[key].lines.pct,
+          statements: coverage[key].statements.pct,
+        };
+      }
+    });
 
-    // config.coverageThreshold = {
-    //   global: {
-    //     branches: coverage.total.branches.pct,
-    //     functions: coverage.total.functions.pct,
-    //     lines: coverage.total.lines.pct,
-    //     statements: coverage.total.statements.pct,
-    //   },
-    //   ...coverageByFile,
-    // };
+    config.coverageThreshold = {
+      global: {
+        branches: coverage.total.branches.pct,
+        functions: coverage.total.functions.pct,
+        lines: coverage.total.lines.pct,
+        statements: coverage.total.statements.pct,
+      },
+      ...coverageByFile,
+    };
 
-    // fs.writeFile("./jest.config.local.json", format(config), (err) => {
-    //   if (err) {
-    //     console.log("Error writing file", err);
-    //   } else {
-    //     console.log("Successfully wrote file");
-    //   }
-    // });
+    config.testKey = "hello";
+
+    fs.writeFile("./jest.config.local.json", format(config), (err) => {
+      if (err) {
+        console.log("Error writing file", err);
+      } else {
+        console.log("Successfully wrote file");
+      }
+    });
   } catch (error) {
     core.setFailed(error.message);
   }
