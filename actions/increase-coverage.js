@@ -1,4 +1,5 @@
 const core = require("@actions/core");
+const cache = require("@actions/cache");
 const fs = require("fs");
 
 const format = require("json-format");
@@ -8,11 +9,14 @@ module.exports = () => {
     const coverageSummaryPath = core.getInput("summary-path");
     const configPath = core.getInput("config-path");
 
-    const coverageSummary = core.getInput("coverage-summary");
-    const testConfig = core.getInput("test-config");
+    const summaryKey = core.getInput("summary-key");
+    const configKey = core.getInput("config-key");
 
-    console.log("coverageSummary -chk", coverageSummary);
-    console.log("testConfig -chk", testConfig);
+    const configCache = cache.restoreCache(configPath, configKey);
+    const summaryCache = cache.restoreCache(coverageSummaryPath, summaryKey);
+
+    console.log("configCache -chk", configCache);
+    console.log("summaryCache -chk", summaryCache);
 
     // const coverage = require(coverageSummaryPath);
     // const config = require(configPath);
