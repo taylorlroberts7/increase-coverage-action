@@ -21,6 +21,10 @@ module.exports = async () => {
     console.log("configCache -chk", configCache);
     console.log("summaryCache -chk", summaryCache);
 
+    const coverageJson = require("coverage/coverage-summary.json");
+
+    console.log("coverageJson -chk", coverageJson);
+
     // const coverage = require(coverageSummaryPath);
     // const config = require(configPath);
 
