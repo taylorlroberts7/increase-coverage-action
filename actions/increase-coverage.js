@@ -54,9 +54,9 @@ module.exports = async () => {
     };
 
     // TODO: Delete this after testing
-    config.testKey = "hi";
+    config.testKey = "yoyo";
 
-    fs.writeFile("./jest.config.local.json", format(config), (err) => {
+    fs.writeFile(configPath, format(config), (err) => {
       if (err) {
         console.log("Error writing file", err);
       } else {
