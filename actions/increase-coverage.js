@@ -12,20 +12,20 @@ module.exports = async () => {
     const summaryKey = core.getInput("summary-key");
     const configKey = core.getInput("config-key");
 
-    const configCache = await cache.restoreCache([configPath], configKey);
+    // const configCache = await cache.restoreCache([configPath], configKey);
 
-    if (!configCache) {
-      throw Error("Failed to retrieve config file from cache");
-    }
+    // if (!configCache) {
+    //   throw Error("Failed to retrieve config file from cache");
+    // }
 
-    const summaryCache = await cache.restoreCache(
-      [coverageSummaryPath],
-      summaryKey
-    );
+    // const summaryCache = await cache.restoreCache(
+    //   [coverageSummaryPath],
+    //   summaryKey
+    // );
 
-    if (!summaryCache) {
-      throw Error("Failed to retrieve summary file from cache");
-    }
+    // if (!summaryCache) {
+    //   throw Error("Failed to retrieve summary file from cache");
+    // }
 
     const coverage = JSON.parse(fs.readFileSync(coverageSummaryPath, "utf8"));
     const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
