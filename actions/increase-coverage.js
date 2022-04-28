@@ -14,6 +14,9 @@ module.exports = async () => {
     const summaryKey = core.getInput("summary-key");
     const configKey = core.getInput("config-key");
 
+    console.log("configPath -chk", configPath);
+    console.log("configKey -chk", configKey);
+
     const configCache = await cache.restoreCache([configPath], configKey);
 
     if (!configCache) {
