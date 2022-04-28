@@ -1,18 +1,22 @@
 name: Increase Code Coverage
 description: Increases code coverage thresholds
 inputs:
+  config-key:
+    description: 'Test config file (e.g. ../jest.config.js)'
+    required: true
   config-path:
     description: 'Path to test config file (e.g. ../jest.config.js)'
+    required: true
+  coverage-type:
+    description: 'Coverage reporter you are using. Currently, only jest and nyc are supported.'
+    required: false
+    default: 'jest'
+  summary-key:
+    description: 'Generated code coverage summary JSON file (e.g. ../coverage/coverage-summary.json)'
     required: true
   summary-path:
     description: 'Path to generated code coverage summary JSON file (e.g. ../coverage/coverage-summary.json)'
     required: true
-  config-key:
-    description: 'Test config file (e.g. ../jest.config.js)'
-    required: true
-  summary-key:
-    description: 'Generated code coverage summary JSON file (e.g. ../coverage/coverage-summary.json)'
-    required: true
 runs:
-  using: 'node16'
   main: 'index.js'
+  using: 'node16'
