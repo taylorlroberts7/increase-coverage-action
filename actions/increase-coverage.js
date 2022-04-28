@@ -3,7 +3,6 @@ const cache = require("@actions/cache");
 const fs = require("fs");
 
 const format = require("json-format");
-const { config } = require("process");
 
 module.exports = async () => {
   try {
@@ -14,25 +13,22 @@ module.exports = async () => {
     const configKey = core.getInput("config-key");
 
     const configCache = await cache.restoreCache([configPath], configKey);
-    console.log("configCache -chk", configCache);
+
+    if (!configCache) {
+      throw Error("Failed to retrieve config file from cache");
+    }
 
     const summaryCache = await cache.restoreCache(
       [coverageSummaryPath],
       summaryKey
     );
 
-    console.log("summaryCache -chk", summaryCache);
+    if (!summaryCache) {
+      throw Error("Failed to retrieve summary file from cache");
+    }
 
     const coverage = JSON.parse(fs.readFileSync(coverageSummaryPath, "utf8"));
-
-    console.log("coverage JSON -chk", coverage);
-
     const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
-
-    console.log("config JSON -chk", config);
-
-    // const coverage = require(coverageSummaryPath);
-    // const config = require(configPath);
 
     const coverageByFile = {};
     Object.keys(coverage).forEach((key) => {
@@ -57,7 +53,8 @@ module.exports = async () => {
       ...coverageByFile,
     };
 
-    config.testKey = "hello";
+    // TODO: Delete this after testing
+    config.testKey = "hi";
 
     fs.writeFile("./jest.config.local.json", format(config), (err) => {
       if (err) {
