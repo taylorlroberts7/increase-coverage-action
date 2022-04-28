@@ -28,17 +28,32 @@ module.exports = async () => {
     console.log("summaryCache -chk", summaryCache);
 
     const coverageJson = fs.readFile(
-      "coverage/coverage-summary.json",
+      // "coverage/coverage-summary.json",
+      coverageSummaryPath,
       (err, data) => {
-        console.log("err -chk", err);
+        console.log("summary err -chk", err);
 
         if (err) throw err;
 
-        console.log("data -chk", JSON.parse(data));
+        console.log("summary data -chk", JSON.parse(data));
       }
     );
 
     console.log("coverageJson -chk", coverageJson);
+
+    const configJson = fs.readFile(
+      // "coverage/coverage-summary.json",
+      configPath,
+      (err, data) => {
+        console.log("config err -chk", err);
+
+        if (err) throw err;
+
+        console.log("config data -chk", JSON.parse(data));
+      }
+    );
+
+    console.log("configJson -chk", configJson);
 
     // const coverage = require(coverageSummaryPath);
     // const config = require(configPath);
