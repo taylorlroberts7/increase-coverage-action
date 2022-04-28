@@ -1,6 +1,11 @@
 const core = require("@actions/core");
 const cache = require("@actions/cache");
 const fs = require("fs");
+// const glob = require("@actions/glob");
+
+// const patterns = ["**/tar.gz", "**/tar.bz"];
+// const globber = await glob.create(patterns.join("\n"));
+// const files = await globber.glob();
 
 const format = require("json-format");
 
@@ -22,7 +27,7 @@ module.exports = async () => {
 
     console.log("summaryCache -chk", summaryCache);
 
-    const coverageJson = require("../coverage/coverage-summary.json");
+    const coverageJson = fs.readFile("coverage/coverage-summary.json");
 
     console.log("coverageJson -chk", coverageJson);
 
