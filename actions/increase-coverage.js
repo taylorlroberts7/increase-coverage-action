@@ -27,7 +27,16 @@ module.exports = async () => {
 
     console.log("summaryCache -chk", summaryCache);
 
-    const coverageJson = fs.readFile("coverage/coverage-summary.json");
+    const coverageJson = fs.readFile(
+      "coverage/coverage-summary.json",
+      (err, data) => {
+        console.log("err -chk", err);
+
+        if (err) throw err;
+
+        console.log("data -chk", data);
+      }
+    );
 
     console.log("coverageJson -chk", coverageJson);
 
