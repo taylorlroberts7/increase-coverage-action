@@ -34,7 +34,7 @@ module.exports = async () => {
 
         if (err) throw err;
 
-        console.log("data -chk", data);
+        console.log("data -chk", JSON.parse(data));
       }
     );
 
