@@ -53,9 +53,6 @@ module.exports = async () => {
       ...coverageByFile,
     };
 
-    // TODO: Delete this after testing
-    config.testKey = "yoyo";
-
     fs.writeFile(configPath, format(config), (err) => {
       if (err) {
         console.log("Error writing file", err);
