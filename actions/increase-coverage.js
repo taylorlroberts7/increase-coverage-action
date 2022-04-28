@@ -12,9 +12,9 @@ module.exports = async () => {
     const summaryKey = core.getInput("summary-key");
     const configKey = core.getInput("config-key");
 
-    const configCache = await cache.restoreCache(configPath, configKey);
+    const configCache = await cache.restoreCache([configPath], configKey);
     const summaryCache = await cache.restoreCache(
-      coverageSummaryPath,
+      [coverageSummaryPath],
       summaryKey
     );
 
