@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const format = require("json-format");
 
-module.exports = () => {
+module.exports = async () => {
   try {
     const coverageSummaryPath = core.getInput("summary-path");
     const configPath = core.getInput("config-path");
@@ -12,8 +12,11 @@ module.exports = () => {
     const summaryKey = core.getInput("summary-key");
     const configKey = core.getInput("config-key");
 
-    const configCache = cache.restoreCache(configPath, configKey);
-    const summaryCache = cache.restoreCache(coverageSummaryPath, summaryKey);
+    const configCache = await cache.restoreCache(configPath, configKey);
+    const summaryCache = await cache.restoreCache(
+      coverageSummaryPath,
+      summaryKey
+    );
 
     console.log("configCache -chk", configCache);
     console.log("summaryCache -chk", summaryCache);
