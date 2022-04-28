@@ -13,15 +13,16 @@ module.exports = async () => {
     const configKey = core.getInput("config-key");
 
     const configCache = await cache.restoreCache([configPath], configKey);
+    console.log("configCache -chk", configCache);
+
     const summaryCache = await cache.restoreCache(
       [coverageSummaryPath],
       summaryKey
     );
 
-    console.log("configCache -chk", configCache);
     console.log("summaryCache -chk", summaryCache);
 
-    const coverageJson = require("coverage/coverage-summary.json");
+    const coverageJson = require("../coverage/coverage-summary.json");
 
     console.log("coverageJson -chk", coverageJson);
 
