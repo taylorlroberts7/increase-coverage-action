@@ -1,11 +1,6 @@
 const core = require("@actions/core");
 const cache = require("@actions/cache");
 const fs = require("fs");
-// const glob = require("@actions/glob");
-
-// const patterns = ["**/tar.gz", "**/tar.bz"];
-// const globber = await glob.create(patterns.join("\n"));
-// const files = await globber.glob();
 
 const format = require("json-format");
 const { config } = require("process");
