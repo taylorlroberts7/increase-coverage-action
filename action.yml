@@ -7,6 +7,12 @@ inputs:
   summary-path:
     description: 'Path to generated code coverage summary JSON file (e.g. ../coverage/coverage-summary.json)'
     required: true
+  test-config:
+    description: 'Test config file (e.g. ../jest.config.js)'
+    required: true
+  coverage-summary:
+    description: 'Generated code coverage summary JSON file (e.g. ../coverage/coverage-summary.json)'
+    required: true
 runs:
   using: 'node16'
   main: 'index.js'

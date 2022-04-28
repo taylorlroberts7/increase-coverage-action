@@ -8,39 +8,45 @@ module.exports = () => {
     const coverageSummaryPath = core.getInput("summary-path");
     const configPath = core.getInput("config-path");
 
-    const coverage = require(coverageSummaryPath);
-    const config = require(configPath);
+    const coverageSummary = core.getInput("coverage-summary");
+    const testConfig = core.getInput("test-config");
 
-    const coverageByFile = {};
-    Object.keys(coverage).forEach((key) => {
-      if (key !== "total") {
-        const filePath = key.substring(key.indexOf("src"));
-        coverageByFile[`./${filePath}`] = {
-          branches: coverage[key].branches.pct,
-          functions: coverage[key].functions.pct,
-          lines: coverage[key].lines.pct,
-          statements: coverage[key].statements.pct,
-        };
-      }
-    });
+    console.log("coverageSummary -chk", coverageSummary);
+    console.log("testConfig -chk", testConfig);
 
-    config.coverageThreshold = {
-      global: {
-        branches: coverage.total.branches.pct,
-        functions: coverage.total.functions.pct,
-        lines: coverage.total.lines.pct,
-        statements: coverage.total.statements.pct,
-      },
-      ...coverageByFile,
-    };
+    // const coverage = require(coverageSummaryPath);
+    // const config = require(configPath);
 
-    fs.writeFile("./jest.config.local.json", format(config), (err) => {
-      if (err) {
-        console.log("Error writing file", err);
-      } else {
-        console.log("Successfully wrote file");
-      }
-    });
+    // const coverageByFile = {};
+    // Object.keys(coverage).forEach((key) => {
+    //   if (key !== "total") {
+    //     const filePath = key.substring(key.indexOf("src"));
+    //     coverageByFile[`./${filePath}`] = {
+    //       branches: coverage[key].branches.pct,
+    //       functions: coverage[key].functions.pct,
+    //       lines: coverage[key].lines.pct,
+    //       statements: coverage[key].statements.pct,
+    //     };
+    //   }
+    // });
+
+    // config.coverageThreshold = {
+    //   global: {
+    //     branches: coverage.total.branches.pct,
+    //     functions: coverage.total.functions.pct,
+    //     lines: coverage.total.lines.pct,
+    //     statements: coverage.total.statements.pct,
+    //   },
+    //   ...coverageByFile,
+    // };
+
+    // fs.writeFile("./jest.config.local.json", format(config), (err) => {
+    //   if (err) {
+    //     console.log("Error writing file", err);
+    //   } else {
+    //     console.log("Successfully wrote file");
+    //   }
+    // });
   } catch (error) {
     core.setFailed(error.message);
   }
