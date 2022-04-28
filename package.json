@@ -9,7 +9,6 @@
   "dependencies": {
     "@actions/cache": "^2.0.2",
     "@actions/core": "^1.6.0",
-    "@actions/glob": "^0.3.0",
     "json-format": "^1.0.1"
   }
 }
