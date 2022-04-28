@@ -27,16 +27,18 @@ module.exports = async () => {
 
     console.log("summaryCache -chk", summaryCache);
 
-    const coverageJson = fs.readFile(
-      // "coverage/coverage-summary.json",
-      coverageSummaryPath,
-      (err, data) => {
-        console.log("summary err -chk", err);
+    // const coverageJson = fs.readFile(
+    //   // "coverage/coverage-summary.json",
+    //   coverageSummaryPath,
+    //   (err, data) => {
 
-        if (err) throw err;
+    //     if (err) throw err;
 
-        console.log("summary data -chk", JSON.parse(data));
-      }
+    //     console.log("summary data -chk", JSON.parse(data));
+    //   }
+    // );
+    const coverageJson = JSON.parse(
+      fs.readFileSync(coverageSummaryPath, "utf8")
     );
 
     console.log("coverageJson -chk", coverageJson);
