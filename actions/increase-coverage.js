@@ -19,7 +19,11 @@ module.exports = async () => {
     console.log("summaryKey -chk", summaryKey);
     console.log("coverageSummaryPath -chk", coverageSummaryPath);
 
-    const configCache = await cache.restoreCache([configPath], configKey);
+    // const configCache = await cache.restoreCache([configPath], configKey);
+    const configCache = await cache.restoreCache(
+      [".nycrc.json"],
+      "Linux-cache-nyc-config-6a0d2c5a8ac9575203ef2e77f0d4ca9914068ecac3272bf4b635c15371ec2ec4"
+    );
 
     const summaryCache = await cache.restoreCache(
       [coverageSummaryPath],
