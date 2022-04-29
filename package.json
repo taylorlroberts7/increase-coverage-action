@@ -1,14 +1,50 @@
 {
-  "name": "increase-coverage-action",
-  "version": "1.0.0",
-  "description": "GitHub action for increasing test coverage thresholds",
-  "main": "index.js",
-  "repository": "https://github.com/taylorlroberts7/increase-coverage-action",
   "author": "taylorlroberts7",
-  "license": "MIT",
+  "description": "GitHub action for increasing test coverage thresholds",
   "dependencies": {
     "@actions/cache": "^2.0.2",
     "@actions/core": "^1.6.0",
     "json-format": "^1.0.1"
-  }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.4",
+    "@semantic-release/npm": "^9.0.1",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "commitizen": "^4.2.4",
+    "conventional-changelog-conventionalcommits": "^4.6.3",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-standard-config": "^2.4.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2",
+    "semantic-release": "^19.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "license": "MIT",
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "yarn lint:staged:script",
+      "prettier --write"
+    ]
+  },
+  "main": "index.js",
+  "name": "increase-coverage-action",
+  "repository": "https://github.com/taylorlroberts7/increase-coverage-action",
+  "scripts": {
+    "lint:staged:script": "eslint --fix",
+    "release": "semantic-release"
+  },
+  "version": "1.0.0"
 }
