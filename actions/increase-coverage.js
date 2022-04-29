@@ -19,14 +19,16 @@ module.exports = async () => {
 
     const configCache = await cache.restoreCache([configPath], configKey);
 
-    if (!configCache) {
-      throw Error("Failed to retrieve config file from cache");
-    }
-
     const summaryCache = await cache.restoreCache(
       [coverageSummaryPath],
       summaryKey
     );
+
+    console.log("summaryCache -chk", summaryCache);
+
+    if (!configCache) {
+      throw Error("Failed to retrieve config file from cache");
+    }
 
     if (!summaryCache) {
       throw Error("Failed to retrieve summary file from cache");
