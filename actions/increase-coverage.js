@@ -16,6 +16,8 @@ module.exports = async () => {
 
     console.log("configPath -chk", configPath);
     console.log("configKey -chk", configKey);
+    console.log("summaryKey -chk", summaryKey);
+    console.log("coverageSummaryPath -chk", coverageSummaryPath);
 
     const configCache = await cache.restoreCache([configPath], configKey);
 
@@ -23,6 +25,8 @@ module.exports = async () => {
       [coverageSummaryPath],
       summaryKey
     );
+
+    console.log("configCache -chk", configCache);
 
     console.log("summaryCache -chk", summaryCache);
 
