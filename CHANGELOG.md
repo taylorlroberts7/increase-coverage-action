@@ -1,3 +1,15 @@
+### [1.0.1](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.0.0...v1.0.1) (2022-05-02)
+
+
+### Bug Fixes
+
+* update input descriptions ([8832da8](https://github.com/taylorlroberts7/increase-coverage-action/commit/8832da8e930356e48efe913766436386b03a6046))
+
+
+### Documentation
+
+* add documentation ([e4f98c5](https://github.com/taylorlroberts7/increase-coverage-action/commit/e4f98c566d2b923bbe01e1f6195daeb0ed579df2))
+
 ## 1.0.0 (2022-04-29)
 
 
