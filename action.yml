@@ -1,5 +1,8 @@
 name: Increase Code Coverage
 description: Increases code coverage thresholds
+branding:
+  color: green
+  icon: eye
 inputs:
   config-key:
     description: 'Cache key used for caching config file in test runner job (e.g. ${{ runner.os }}-cache-jest-config)'
