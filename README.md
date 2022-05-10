@@ -41,6 +41,23 @@ You can use this action in combination with the [Add & Commit action](https://gi
   if: github.ref == 'refs/heads/main'
   ```
 - [See example below](#running-increase-coverage-action)
+- **Note**: If your main branch is protected, you will need to pass a GitHub token to `actions/checkout`:
+  ```yml
+  - name: Checkout
+    uses: actions/checkout@v2
+    with:
+      token: ${{ secrets.GH_TOKEN }}
+  ```
+  - In this case, you'll want to prevent action loops on your main branch by telling GitHub to ignore changes to your config json files:
+    ```yml
+    on:
+      push:
+        branches:
+          - main
+          - production
+        paths:
+          - "!**.config.local.json"
+    ```
 
 ### Using This Action with Other Test Coverage Tools
 
