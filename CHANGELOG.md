@@ -1,3 +1,10 @@
+### [1.0.2](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.0.1...v1.0.2) (2022-05-10)
+
+
+### Documentation
+
+* add notes about protected branches ([45d31d3](https://github.com/taylorlroberts7/increase-coverage-action/commit/45d31d368a9fd549c94bcea9230d509a3f4faade))
+
 ### [1.0.1](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.0.0...v1.0.1) (2022-05-02)
 
 
