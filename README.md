@@ -55,8 +55,8 @@ You can use this action in combination with the [Add & Commit action](https://gi
         branches:
           - main
           - production
-        paths:
-          - "!**.config.local.json"
+        paths-ignore:
+          - "**.config.local.json"
     ```
 
 ### Using This Action with Other Test Coverage Tools
