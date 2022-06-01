@@ -1,3 +1,10 @@
+### [1.0.3](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.0.2...v1.0.3) (2022-06-01)
+
+
+### Documentation
+
+* **readme:** use paths-ignore instead of paths ([424f94d](https://github.com/taylorlroberts7/increase-coverage-action/commit/424f94d2e2560bf80f707686c4439f732f649fd0))
+
 ### [1.0.2](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.0.1...v1.0.2) (2022-05-10)
 
 
