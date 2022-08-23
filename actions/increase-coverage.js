@@ -45,7 +45,7 @@ module.exports = async () => {
       }
     });
 
-    if (shouldSetGlobalThreshold) {
+    if (shouldSetGlobalThreshold === "true") {
       config.coverageThreshold = {
         global: {
           branches: coverage.total.branches.pct,
