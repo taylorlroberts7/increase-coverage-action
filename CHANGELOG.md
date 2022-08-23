@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.0.3...v1.1.0) (2022-08-23)
+
+
+### Features
+
+* **global threshold:** add should-set-global input ([56d871f](https://github.com/taylorlroberts7/increase-coverage-action/commit/56d871fc0ffa1777eb43003babd387bd7ebe6797))
+
 ### [1.0.3](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.0.2...v1.0.3) (2022-06-01)
 
 
