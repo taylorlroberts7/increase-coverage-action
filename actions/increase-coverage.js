@@ -6,11 +6,13 @@ const format = require("json-format");
 
 module.exports = async () => {
   try {
-    const coverageSummaryPath = core.getInput("summary-path");
+    const configKey = core.getInput("config-key");
     const configPath = core.getInput("config-path");
 
     const summaryKey = core.getInput("summary-key");
-    const configKey = core.getInput("config-key");
+    const coverageSummaryPath = core.getInput("summary-path");
+
+    const shouldSetGlobalThreshold = core.getInput("should-set-global");
 
     const configCache = await cache.restoreCache([configPath], configKey);
 
@@ -43,15 +45,19 @@ module.exports = async () => {
       }
     });
 
-    config.coverageThreshold = {
-      global: {
-        branches: coverage.total.branches.pct,
-        functions: coverage.total.functions.pct,
-        lines: coverage.total.lines.pct,
-        statements: coverage.total.statements.pct,
-      },
-      ...coverageByFile,
-    };
+    if (shouldSetGlobalThreshold) {
+      config.coverageThreshold = {
+        global: {
+          branches: coverage.total.branches.pct,
+          functions: coverage.total.functions.pct,
+          lines: coverage.total.lines.pct,
+          statements: coverage.total.statements.pct,
+        },
+        ...coverageByFile,
+      };
+    } else {
+      config.coverageThreshold = coverageByFile;
+    }
 
     fs.writeFile(configPath, format(config), (err) => {
       if (err) {

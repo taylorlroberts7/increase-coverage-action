@@ -10,6 +10,11 @@ inputs:
   config-path:
     description: 'Path to test config file (e.g. ../jest.config.js)'
     required: true
+  should-set-global:
+    default: true
+    description: 'Whether you want the "global" coverage threshold set or not'
+    required: false
+    type: boolean
   summary-key:
     description: 'Cache key used for caching the generated code coverage summary JSON file (e.g. ${{ runner.os }}-cache-coverage-summary)'
     required: true
