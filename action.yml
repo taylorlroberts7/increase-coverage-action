@@ -5,7 +5,7 @@ branding:
   icon: eye
 inputs:
   config-key:
-    description: 'Cache key used for caching config file in test runner job (e.g. ${{ runner.os }}-cache-jest-config)'
+    description: 'Cache key used for caching config file in test runner job'
     required: true
   config-path:
     description: 'Path to test config file (e.g. ../jest.config.js)'
@@ -15,7 +15,7 @@ inputs:
     description: 'Whether you want the "global" coverage threshold set or not'
     required: false
   summary-key:
-    description: 'Cache key used for caching the generated code coverage summary JSON file (e.g. ${{ runner.os }}-cache-coverage-summary)'
+    description: 'Cache key used for caching the generated code coverage summary JSON file'
     required: true
   summary-path:
     description: 'Path to generated code coverage summary JSON file (e.g. ../coverage/coverage-summary.json)'
