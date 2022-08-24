@@ -1,3 +1,10 @@
+### [1.1.2](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.1.1...v1.1.2) (2022-08-24)
+
+
+### Bug Fixes
+
+* **action:** remove runner.os from input descriptions ([0e5254f](https://github.com/taylorlroberts7/increase-coverage-action/commit/0e5254ff29dc56494b42140ef8532a2a85addf76))
+
 ### [1.1.1](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.1.0...v1.1.1) (2022-08-23)
 
 
