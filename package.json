@@ -41,7 +41,10 @@
   },
   "main": "index.js",
   "name": "increase-coverage-action",
-  "repository": "https://github.com/taylorlroberts7/increase-coverage-action",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taylorlroberts7/increase-coverage-action.git"
+  },
   "scripts": {
     "lint": "eslint . --ext js",
     "lint:staged:script": "eslint --fix",

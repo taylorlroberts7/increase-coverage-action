@@ -1,6 +1,5 @@
 module.exports = {
   branches: ["main"],
-  repositoryUrl: "https://github.com/taylorlroberts7/increase-coverage-action",
   plugins: [
     [
       "@semantic-release/commit-analyzer",
