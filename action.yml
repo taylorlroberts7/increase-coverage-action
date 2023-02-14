@@ -10,6 +10,9 @@ inputs:
   config-path:
     description: 'Path to test config file (e.g. ../jest.config.js)'
     required: true
+  config-restore-keys:
+    description: 'Optional ordered list of keys used for restoring config cache if no cache hit occurred for config-key'
+    required: false
   should-set-global:
     default: 'true'
     description: 'Whether you want the "global" coverage threshold set or not'
@@ -20,6 +23,9 @@ inputs:
   summary-path:
     description: 'Path to generated code coverage summary JSON file (e.g. ../coverage/coverage-summary.json)'
     required: true
+  summary-restore-keys:
+    description: 'Optional ordered list of keys used for restoring summary cache if no cache hit occurred for summary-key'
+    required: false
 runs:
   using: 'node16'
   main: 'index.js'
