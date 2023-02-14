@@ -43,6 +43,7 @@
   "name": "increase-coverage-action",
   "repository": "https://github.com/taylorlroberts7/increase-coverage-action",
   "scripts": {
+    "lint": "eslint . --ext js",
     "lint:staged:script": "eslint --fix",
     "release": "semantic-release"
   },

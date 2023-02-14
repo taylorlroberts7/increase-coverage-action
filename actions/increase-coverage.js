@@ -8,28 +8,62 @@ module.exports = async () => {
   try {
     const configKey = core.getInput("config-key");
     const configPath = core.getInput("config-path");
+    const configRestoreKeys = core
+      .getInput("config-restore-keys")
+      .split("\n")
+      .filter((x) => x !== "");
 
     const summaryKey = core.getInput("summary-key");
-    const coverageSummaryPath = core.getInput("summary-path");
+    const summaryPath = core.getInput("summary-path");
+    const summaryRestoreKeys = core
+      .getInput("summary-restore-keys")
+      .split("\n")
+      .filter((x) => x !== "");
 
-    const shouldSetGlobalThreshold = core.getInput("should-set-global");
+    const shouldSetGlobalThreshold = core
+      .getInput("should-set-global")
+      .toString();
 
-    const configCache = await cache.restoreCache([configPath], configKey);
+    const inputs = {
+      configKey,
+      configPath,
+      configRestoreKeys,
+      summaryKey,
+      summaryPath,
+      summaryRestoreKeys,
+      shouldSetGlobalThreshold,
+    };
+
+    core.debug("Input values:");
+    core.debug(JSON.stringify(inputs));
+
+    const configCache = await cache.restoreCache(
+      [configPath],
+      configKey,
+      configRestoreKeys
+    );
+
+    core.debug("configCache:");
+    core.debug(configCache || "undefined");
 
     if (!configCache) {
       throw Error("Failed to retrieve config file from cache");
     }
 
     const summaryCache = await cache.restoreCache(
-      [coverageSummaryPath],
-      summaryKey
+      [summaryPath],
+      summaryKey,
+      summaryRestoreKeys
     );
+
+    core.debug("summaryCache:");
+    core.debug(summaryCache || "undefined");
 
     if (!summaryCache) {
       throw Error("Failed to retrieve summary file from cache");
     }
 
-    const coverage = JSON.parse(fs.readFileSync(coverageSummaryPath, "utf8"));
+    const coverage = JSON.parse(fs.readFileSync(summaryPath, "utf8"));
     const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
 
     const coverageByFile = {};
@@ -46,6 +80,8 @@ module.exports = async () => {
     });
 
     if (shouldSetGlobalThreshold === "true") {
+      core.debug("Setting global coverage threshold");
+
       config.coverageThreshold = {
         global: {
           branches: coverage.total.branches.pct,
@@ -56,6 +92,8 @@ module.exports = async () => {
         ...coverageByFile,
       };
     } else {
+      core.debug("Skipping global coverage threshold");
+
       config.coverageThreshold = coverageByFile;
     }
 

@@ -1,23 +1,13 @@
 module.exports = {
+  env: {
+    node: true,
+    es6: true,
+  },
+  extends: "eslint:recommended",
+  parserOptions: {
+    ecmaVersion: "latest",
+  },
   rules: {
-    "import/order": [
-      "error",
-      {
-        alphabetize: {
-          caseInsensitive: false,
-          order: "asc",
-        },
-        groups: [
-          "object",
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-        ],
-        "newlines-between": "always",
-      },
-    ],
+    "no-undef": "error",
   },
 };
