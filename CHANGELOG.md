@@ -1,3 +1,17 @@
+### [1.1.3](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.1.2...v1.1.3) (2023-02-14)
+
+
+### Bug Fixes
+
+* **release:** revert major eslint changes ([e76ce8c](https://github.com/taylorlroberts7/increase-coverage-action/commit/e76ce8ca342af5d9be393a0f5562a7073d1bdcc5))
+* **release:** update release action ([c192987](https://github.com/taylorlroberts7/increase-coverage-action/commit/c19298783bf06f65104f60d9f029c1365f0db915))
+* **semantic release:** update repository urls ([102c368](https://github.com/taylorlroberts7/increase-coverage-action/commit/102c3684affb3f9f9d64eb104e0cb2735dbcf8c6))
+
+
+### CI
+
+* **release:** upgrade checkout action ([62945d4](https://github.com/taylorlroberts7/increase-coverage-action/commit/62945d412026d024c1a53994368a52af3e75a2e5))
+
 ### [1.1.2](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.1.1...v1.1.2) (2022-08-24)
 
 
