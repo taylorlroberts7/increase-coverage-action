@@ -29,7 +29,9 @@ jobs:
             ${{ runner.OS }}-${{ env.cache-name }}-
             ${{ runner.OS }}-
       - name: Install dependencies
-        run: yarn
+        run: yarn --frozen-lockfile
       - name: Cut release
-        run: yarn release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx semantic-release
       
