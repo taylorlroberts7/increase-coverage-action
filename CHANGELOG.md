@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.1.3...v1.2.0) (2023-02-14)
+
+
+### Features
+
+* **action:** add optional restore-keys inputs ([4c72a6f](https://github.com/taylorlroberts7/increase-coverage-action/commit/4c72a6f967a97a104face25f13b06643f4adae8e))
+
 ### [1.1.3](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.1.2...v1.1.3) (2023-02-14)
 
 
