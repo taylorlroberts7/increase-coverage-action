@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.2.0...v1.3.0) (2023-09-05)
+
+
+### Build System
+
+* upgrade actions dependencies ([5d9ef19](https://github.com/taylorlroberts7/increase-coverage-action/commit/5d9ef1983a168cdb6e30f51a95d153c3cf057967))
+
 ## [1.2.0](https://github.com/taylorlroberts7/increase-coverage-action/compare/v1.1.3...v1.2.0) (2023-02-14)
 
 
